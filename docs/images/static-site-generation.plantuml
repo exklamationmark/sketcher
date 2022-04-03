@@ -1,0 +1,26 @@
+@startuml
+fork
+  :Process with article;
+fork again
+  :...;
+fork again
+  :Process with article;
+  note right
+    Same steps >>>
+  end note
+fork again
+  :Inspect article's folder;
+  fork
+    :Write .pandoc file with additional metadata;
+    :Render .pandoc content into HTML;
+    :Embed HTML content into theme's template;
+    :Article's HTML page;
+  fork again
+    :Find .plantuml diagrams;
+    :Render diagrams into .svg;
+  end merge
+  :Put into article's renderred folder;
+end merge
+  :Generate index;
+  :Create index page;
+@enduml
